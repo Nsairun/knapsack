@@ -4,22 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="assets/styles.css">
     <title>Knapsac</title>
 </head>
 <body>
+<div class="general">
     <div class="start">
-        <h1>KNACKBAG</h1>
+        <h1>KnapPACK</h1>
+    </div>
+    <div class="btns">
+         <button class="set-max">Set M-W</button>
+         <button class="add">+</button>
     </div>
     <div class="weight">
-        <h3 aria-placeholder="">weight </h3>
+        <h>max-weight</h>
+        <input class="weightsum" type="number" placeholder="" min= 0 max=20>
     </div>
     <div class="list">
-    <select name="role">
-       <option class="item1">book</option>
+    <select class="items" name="role">
+       <option class="item1">Select Items</option>
        <option class="item2">pen</option>
        <option class="item3">laptop</option>
-       <option class="item4">USB key</option>
+       <option class="item4">USB-key</option>
        <option class="item5">iphone</option>
        <option class="item6">shoe</option>
        <option class="item7">shirt</option>
@@ -38,7 +44,16 @@
        <option class="item20">banana</option>
     </div>
     </select>
-    
-    
+    <div class="bottomholders">
+        <h>Items</h>
+    <div id="itemDisplay" class="container" ></div>
+        <h>weightSum</h>
+    <div id="currentSum" class="container"></div>
+        <h>Result</h>
+        <div id="stateOfKnapsack" class="container"></div>
+    </div>
+    <button onclick="reset()">Reset</button>
+    <script src="script.js"></script>
+</div>    
 </body>
 </html>
