@@ -2,8 +2,7 @@ let maxField = document.querySelector(".weightsum");
 let startBtn = document.querySelector(".set-max");
 let selectorOption = document.querySelector(".items");
 let addButton = document.querySelector(".add");
-let status1 = document.querySelector("#stateOfKnapsack");
-let weightsumdisplay = document.getElementById("currentSum");
+let weightSumDisplay = document.getElementById("currentSum");
 let display = document.querySelector("#itemDisplay");
 
 let arrItems = [
@@ -45,8 +44,7 @@ if (getStorage()) {
   if (getStorage()?.maxWeight) maxField.value = getStorage()?.maxWeight || 0;
 
   display.innerHTML = getStorage()?.items || "";
-  weightsumdisplay.innerHTML = getStorage()?.weight || "";
-  status1.innerHTML = getStorage()?.results || "";
+  weightSumDisplay.innerHTML = getStorage()?.weight || "";
 }
 
 startBtn.addEventListener("click", () => {
@@ -55,7 +53,7 @@ startBtn.addEventListener("click", () => {
     return;
   }
 
-  weightsumdisplay.style.border = "3px solid green";
+  weightSumDisplay.style.border = "3px solid green";
   updateStorage({ ...getStorage(), maxWeight: maxField.value });
 });
 
@@ -68,12 +66,12 @@ selectorOption.addEventListener("change", (e) => {
 
   arrEl = arrItems.find((item) => item.name === e.target.value);
 
-  if (+weightsumdisplay.innerHTML + arrEl.weight > +maxField.value) {
-    weightsumdisplay.style.border = "3px solid red";
+  if (+weightSumDisplay.innerHTML + arrEl.weight > +maxField.value) {
+    weightSumDisplay.style.border = "3px solid red";
     return;
   }
 
-  weightsumdisplay.style.border = "3px solid green";
+  weightSumDisplay.style.border = "3px solid green";
 
   display.innerHTML += `${e.target.value} <br />`;
 
@@ -89,18 +87,17 @@ const updateWeight = (weigthUpdate) => {
   const sessionData = getStorage();
   sessionData.weight = +sessionData.weight + +weigthUpdate;
 
-  weightsumdisplay.innerHTML = sessionData.weight;
+  weightSumDisplay.innerHTML = sessionData.weight;
 
   updateStorage(sessionData);
 };
 
+
 function reset() {
   sessionStorage.removeItem("data");
   maxField.value = "";
-  status1.innerHTML = "";
-  weightsumdisplay.innerHTML = "";
+  weightSumDisplay.innerHTML = "";
   display.innerHTML = "";
   selectorOption.value = document.getElementsByTagName("option")[0].value;
-
-  weightsumdisplay.style.border = "unset";
+  weightSumDisplay.style.border = "unset";
 }
