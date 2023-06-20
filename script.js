@@ -63,7 +63,7 @@ selectorOption.addEventListener('change', (e) => {
     return
   }
 
-   const arrEl = arrItems.find((item) => item.name === e.target.value)
+  const arrEl = arrItems.find((item) => item.name === e.target.value)
 
   if (+weightSumDisplay.innerHTML + arrEl.weight > +maxField.value) {
     weightSumDisplay.style.border = '3px solid red'
