@@ -3,7 +3,7 @@ let startBtn = document.querySelector(".set-max");
 let selectorOption = document.querySelector(".items");
 let addButton = document.querySelector(".add");
 let weightSumDisplay = document.getElementById("currentSum");
-let display = document.querySelector("#itemDisplay");
+let display = document.querySelector("#item-display");
 
 let arrItems = [
   { name: "book", weight: 1, value: 300 },
