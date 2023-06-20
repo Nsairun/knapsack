@@ -1,7 +1,7 @@
 const maxField = document.querySelector('.weightsum')
 const startBtn = document.querySelector('.set-max')
-const selectorOption = document.querySelector('#item-display')
-const weightSumDisplay = document.getElementById('current-sum')
+const selectorOption = document.querySelector('.items')
+const weightSumDisplay = document.querySelector('.current-sum')
 const display = document.querySelector('#item-display')
 
 const arrItems = [
@@ -37,13 +37,13 @@ const data = {
 
 const getStorage = () => JSON.parse(window?.sessionStorage.getItem('data')) || data
 const updateStorage = (update) =>
-  window?.sessionStorage.setItem('data', JSON.stringify(update))
+  window.sessionStorage.setItem('data', JSON.stringify(update))
 
 if (getStorage()) {
   if (getStorage()?.maxWeight) maxField.value = getStorage()?.maxWeight || 0
 
   display.innerHTML = getStorage()?.items || ""
-  weightSumDisplay?.innerHTML = getStorage()?.weight || "";
+  weightSumDisplay.innerHTML = getStorage()?.weight || ""
 }
 
 startBtn.addEventListener('click', () => {
@@ -52,17 +52,20 @@ startBtn.addEventListener('click', () => {
     return;
   }
 
-  weightSumDisplay?.style.border = '3px solid green'
+  weightSumDisplay.style.border = '3px solid green'
   updateStorage({ ...getStorage(), maxWeight: maxField.value })
 })
 
 selectorOption.addEventListener('change', (e) => {
+
+  console.log(weightSumDisplay)
   if (!maxField.value) {
     window?.alert('input a max weight')
     reset()
     return;
   }
 
+  console.log(e.target.value)
   const arrEl = arrItems.find((item) => item.name === e.target.value)
 
   if (+weightSumDisplay?.innerHTML + arrEl.weight > +maxField.value) {
@@ -70,7 +73,7 @@ selectorOption.addEventListener('change', (e) => {
     return;
   }
 
-  weightSumDisplay?.style.border = '3px solid green'
+  weightSumDisplay.style.border = '3px solid green'
 
   display.innerHTML += `${e.target.value} <br />`
 
@@ -86,7 +89,7 @@ const updateWeight = (weigthUpdate) => {
   const sessionData = getStorage()
   sessionData.weight = +sessionData.weight + +weigthUpdate
 
-  weightSumDisplay?.innerHTML = sessionData.weight
+  weightSumDisplay.innerHTML = sessionData.weight
 
   updateStorage(sessionData)
 }
@@ -94,8 +97,8 @@ const updateWeight = (weigthUpdate) => {
 function reset () {
   window?.sessionStorage.removeItem('data')
   maxField.value = ''
-  weightSumDisplay?.innerHTML = ''
+  weightSumDisplay.innerHTML = ''
   display.innerHTML = ''
   selectorOption.value = document.getElementsByTagName('option')[0].value
-  weightSumDisplay?.style.border = 'unset'
+  weightSumDisplay.style.border = 'unset'
 }
