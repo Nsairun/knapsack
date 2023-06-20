@@ -26,10 +26,10 @@ body {
 }
 
 .bottomholders {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .weightsum {
@@ -54,7 +54,6 @@ button {
   border-radius: 10px;
   margin: 2%;
   color: #fff;
-  /* max-width: fit-content; */
 }
 
 .container,
@@ -66,6 +65,5 @@ button {
   background-color: #fff;
   margin: 0 auto;
   overflow: auto;
-	max-height: fit-content;
-	/* max-width: fit-content; */
+  max-height: fit-content;
 }
