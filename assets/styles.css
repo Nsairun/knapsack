@@ -5,7 +5,7 @@ body {
 }
 
 .general {
-  background-color: rgba(70, 88, 3, 0.705);
+  background-color: #465803b4;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -50,6 +50,7 @@ button {
   color: #fff;
   max-width: fit-content;
 }
+
 .container {
   width: 300px;
   height: 75px;
@@ -59,6 +60,7 @@ button {
   margin: 0px auto;
   overflow: auto;
 }
+
 .stateOfKnapsack {
   color: #000;
 }
