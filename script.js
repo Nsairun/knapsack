@@ -1,7 +1,6 @@
-const  maxField = document.querySelector('.weightsum')
-const  startBtn = document.querySelector('.set-max')
-const  selectorOption = document.querySelector('.items')
-const addButton = document.querySelector('.add')
+const maxField = document.querySelector('.weightsum')
+const startBtn = document.querySelector('.set-max')
+const selectorOption = document.querySelector('.items')
 const weightSumDisplay = document.getElementById('currentSum')
 const display = document.querySelector('#item-display')
 
@@ -26,22 +25,22 @@ const arrItems = [
   { name: 'bulb', weight: 3, value: 1000 },
   { name: 'bread', weight: 2, value: 100 },
   { name: 'koki', weight: 2, value: 500 },
-  { name: 'banana', weight: 2, value: 300 },
-];
+  { name: 'banana', weight: 2, value: 300 }
+]
 
 const data = {
   items: '',
   weight: 0,
   maxWeight: 0,
   results: ''
-};
+}
 
-const getStorage = () => JSON.parse(sessionStorage.getItem('data')) || data;
+const getStorage = () => JSON.parse(sessionStorage.getItem('data')) || data
 const updateStorage = (update) =>
-  sessionStorage.setItem('data', JSON.stringify(update));
+  sessionStorage.setItem('data', JSON.stringify(update))
 
 if (getStorage()) {
-  if (getStorage()?.maxWeight) maxField.value = getStorage()?.maxWeight || 0;
+  if (getStorage()?.maxWeight) maxField.value = getStorage()?.maxWeight || 0
 
   display.innerHTML = getStorage()?.items || ''
   weightSumDisplay.innerHTML = getStorage()?.weight || ''
@@ -50,25 +49,25 @@ if (getStorage()) {
 startBtn.addEventListener('click', () => {
   if (!maxField.value) {
     alert('input a max weight')
-    return;
+    return
   }
 
   weightSumDisplay.style.border = '3px solid green'
   updateStorage({ ...getStorage(), maxWeight: maxField.value })
-});
+})
 
 selectorOption.addEventListener('change', (e) => {
   if (!maxField.value) {
     alert('input a max weight')
     reset()
-    return;
+    return
   }
 
- const arrEl = arrItems.find((item) => item.name === e.target.value);
+   const arrEl = arrItems.find((item) => item.name === e.target.value)
 
   if (+weightSumDisplay.innerHTML + arrEl.weight > +maxField.value) {
     weightSumDisplay.style.border = '3px solid red'
-    return;
+    return
   }
 
   weightSumDisplay.style.border = '3px solid green'
@@ -92,11 +91,11 @@ const updateWeight = (weigthUpdate) => {
   updateStorage(sessionData)
 }
 
-function reset(){
-  sessionStorage.removeItem('data');
-  maxField.value = '';
-  weightSumDisplay.innerHTML = '';
-  display.innerHTML = '';
-  selectorOption.value = document.getElementsByTagName('option')[0].value;
-  weightSumDisplay.style.border = 'unset';
-};
+function reset () {
+  sessionStorage.removeItem('data')
+  maxField.value = ''
+  weightSumDisplay.innerHTML = ''
+  display.innerHTML = ''
+  selectorOption.value = document.getElementsByTagName('option')[0].value
+  weightSumDisplay.style.border = 'unset'
+}
